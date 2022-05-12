@@ -1,4 +1,4 @@
-import "./sidebar.css";
+import "./sidebar.scss";
 import { 
     RssFeed, 
     School, 
@@ -11,10 +11,13 @@ import {
     Chat
 } from "@material-ui/icons"
 
+import CloseFriend from "../CloseFriend/CloseFriend"
+import { Users } from "../../dummyData"
+
 export default function Sidebar() {
     return (
         <div className="sidebar">
-            <div className="sidebarWrapper">
+            <div className="sm-padding-20">
                 <ul className="sidebarList">
                     <li className="sidebarListItem">
                         <RssFeed className="sidebarIcon" />
@@ -52,6 +55,15 @@ export default function Sidebar() {
                         <School className="sidebarIcon" />
                         <span className="sidebarListItemText">Courses</span>
                     </li>
+                </ul>
+                <button className="sidebarButton">Show More</button>
+                <hr className="sm-top-margin-20 sm-bottom-margin-20" />
+                <ul className="sidebarFriendList">
+                    {
+                        Users.map(u => (
+                            <CloseFriend key={u.id} friend={u} />
+                        ))
+                    }
                 </ul>
             </div>
         </div>

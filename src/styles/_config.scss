@@ -1,0 +1,35 @@
+
+/* -------------------- Configurable margin & pading style in px --------------------- */
+
+$spaceamounts: ( 0, 4, 8, 10, 12, 14, 16, 20, 21, 24, 32, 34, 40, 45, 48, 50, 56, 66, 80, 88, 128, 200, 351, 359, 407);
+$sides: (top, bottom, left, right);
+
+@each $space in $spaceamounts {
+  @each $side in $sides {
+    .sm-#{$side}-margin-#{$space} {
+      margin-#{$side}: #{$space}px !important;
+    }
+
+    .sm-margin-#{$space} {
+      margin: #{$space}px !important;
+    }
+
+    .sm-#{$side}-padding-#{$space} {
+      padding-#{$side}: #{$space}px !important;
+    }
+
+    .sm-padding-#{$space} {
+      padding: #{$space}px !important;
+    }
+  }
+}
+
+/* ------------------------- Configurable font style  --------------------- */
+
+$fontsize: (10, 12, 13, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32);
+
+@each $size in $fontsize {
+  .sm-font-size-#{$size} {
+    font-size: #{$size}px !important;
+  }
+}
