@@ -18,7 +18,7 @@ export default function Post({ post }) {
       <div className="sm-padding-10">
         <div className="postTop">
           <div className="postTopLeft">
-            <img src={userDetails?.profilePicture} alt="" className="postProfileImg" />
+            <img src={userDetails?.profilePicture} alt="" className="sm-profile-image-32" />
             <span className="postUsername">{userDetails?.username}</span>
             <span className="sm-font-size-12">{post.date}</span>
           </div>

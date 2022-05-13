@@ -12,7 +12,7 @@ export default function Rightbar() {
                 </div>
                 <img src="/assets/ad.png" alt="" className="rightbarAd" />
                 <h4 className="sm-bottom-margin-20">Online Friends</h4>
-                <ul className="rightbarFriendList">
+                <ul className="sm-list-style">
                     {
                         Users.map(u => (
                             <Online key={u.id} user={u} />

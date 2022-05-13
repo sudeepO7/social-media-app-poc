@@ -18,7 +18,7 @@ export default function Sidebar() {
     return (
         <div className="sidebar">
             <div className="sm-padding-20">
-                <ul className="sidebarList">
+                <ul className="sm-list-style">
                     <li className="sidebarListItem">
                         <RssFeed className="sidebarIcon" />
                         <span className="sidebarListItemText">Feed</span>
@@ -58,7 +58,7 @@ export default function Sidebar() {
                 </ul>
                 <button className="sidebarButton">Show More</button>
                 <hr className="sm-top-margin-20 sm-bottom-margin-20" />
-                <ul className="sidebarFriendList">
+                <ul className="sm-list-style">
                     {
                         Users.map(u => (
                             <CloseFriend key={u.id} friend={u} />

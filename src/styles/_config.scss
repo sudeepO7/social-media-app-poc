@@ -33,3 +33,17 @@ $fontsize: (10, 12, 13, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32);
     font-size: #{$size}px !important;
   }
 }
+
+/* ------------------------- Configurable profile image  --------------------- */
+
+$sizes: (32, 40, 50);
+
+@each $size in $sizes {
+  .sm-profile-image-#{$size} {
+    width: #{$size}px !important;
+    height: #{$size}px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+  }
+}
+
