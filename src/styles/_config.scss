@@ -1,7 +1,7 @@
 
 /* -------------------- Configurable margin & pading style in px --------------------- */
 
-$spaceamounts: ( 0, 4, 8, 10, 12, 14, 16, 20, 21, 24, 32, 34, 40, 45, 48, 50, 56, 66, 80, 88, 128, 200, 351, 359, 407);
+$spaceamounts: ( 0, 4, 8, 10, 12, 14, 16, 20, 21, 24, 30, 32, 34, 40, 45, 48, 50, 56, 66, 80, 88, 128, 200, 351, 359, 407);
 $sides: (top, bottom, left, right);
 
 @each $space in $spaceamounts {
@@ -36,7 +36,7 @@ $fontsize: (10, 12, 13, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32);
 
 /* ------------------------- Configurable profile image  --------------------- */
 
-$sizes: (32, 40, 50);
+$sizes: (32, 40, 50, 150);
 
 @each $size in $sizes {
   .sm-profile-image-#{$size} {

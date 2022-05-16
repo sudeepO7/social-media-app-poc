@@ -1,11 +1,14 @@
+import { useContext } from 'react'
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
+import { AppContext } from '../../AppContext';
 import "./topbar.scss";
 
 export default function Topbar() {
+    const { globalState } = useContext(AppContext);
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
-                <span className="logo">sudeep07</span>
+                <span className="logo">{globalState?.appTitle}</span>
             </div>
             <div className="topbarCenter">
                 <div className="searchBar">

@@ -1,0 +1,75 @@
+@import "../../global";
+
+.login {
+    width: 100vw;
+    height: 100vh;
+    background: $fbWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginWrapper {
+    height: 70%;
+    width: 70%;
+    display: flex;
+}
+
+.loginLeft, .loginRight {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.appLogo {
+    font-size: 50px;
+    font-weight: 800;
+    color: $fbBlue;
+    margin-bottom: 10px;
+}
+
+.appDesc {
+    font-style: 24px;
+}
+
+.loginInput {
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid $gray;
+    font-style: 18px;
+    padding-left: 20px;
+}
+
+.loginInput:focus {
+    outline: none;
+}
+
+.loginButton {
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: $fbBlue;
+    color: $white;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.loginForgot {
+    text-align: center;
+    color: $fbBlue;
+}
+
+.loginRegister {
+    width: 65%;
+    align-self: center;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: $fbGreen;
+    color: $white;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+}
