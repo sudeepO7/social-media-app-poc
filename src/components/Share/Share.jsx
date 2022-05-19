@@ -1,13 +1,14 @@
 import "./share.scss"
 
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import { mUrl } from "../../helpers/Helper"
 
 export default function Share() {
   return (
     <div className="share">
         <div className="shareWrapper sm-padding-10">
             <div className="shareTop">
-                <img src="/assets/person/1.jpeg" alt="" className="sm-profile-image-50 shareProfileImg" />
+                <img src={mUrl('person/1.jpeg')} alt="" className="sm-profile-image-50 shareProfileImg" />
                 <input placeholder="What's in your mind" className="shareInput" />
             </div>
             <hr className="sm-margin-20" />

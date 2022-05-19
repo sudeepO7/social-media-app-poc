@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
 import { AppContext } from '../../AppContext';
+import { mUrl } from "../../helpers/Helper"
+import { Link } from "react-router-dom"
 import "./topbar.scss";
 
 export default function Topbar() {
@@ -8,7 +10,9 @@ export default function Topbar() {
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
-                <span className="logo">{globalState?.appTitle}</span>
+                <Link to="/" style={{textDecoration: "none"}}>
+                    <span className="logo">{globalState?.appTitle}</span>
+                </Link>
             </div>
             <div className="topbarCenter">
                 <div className="searchBar">
@@ -35,7 +39,7 @@ export default function Topbar() {
                         <span className="topbarIconBadge">1</span>
                     </div>
                 </div>
-                <img src="/assets/person/1.jpeg" alt="img" className="sm-profile-image-32 topbarProfileImg" />
+                <img src={mUrl('person/1.jpeg')} alt="img" className="sm-profile-image-32 topbarProfileImg" />
             </div>
         </div>
     )
