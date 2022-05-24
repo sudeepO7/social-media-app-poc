@@ -1,8 +1,9 @@
 import "./rightbar.scss";
 import Online from "../Online/Online"
+import { getRelationshipStatus } from "../../helpers/Helper"
 import { Users } from "../../dummyData"
 
-export default function Rightbar({ profile }) {
+export default function Rightbar({ user }) {
 
     const HomeRightBar = () => {
         return (
@@ -31,15 +32,15 @@ export default function Rightbar({ profile }) {
                 <div className="rightbarInfo sm-bottom-margin-30">
                     <div className="rightbarInfoItem sm-bottom-margin-10">
                         <span className="rightbarInfoKey">City:</span>
-                        <span className="rightbarInfoValue">Lucknow</span>
+                        <span className="rightbarInfoValue">{user.city}</span>
                     </div>
                     <div className="rightbarInfoItem sm-bottom-margin-10">
                         <span className="rightbarInfoKey">From:</span>
-                        <span className="rightbarInfoValue">India</span>
+                        <span className="rightbarInfoValue">{user.state}</span>
                     </div>
                     <div className="rightbarInfoItem sm-bottom-margin-10">
                         <span className="rightbarInfoKey">Relationship:</span>
-                        <span className="rightbarInfoValue">Single</span>
+                        <span className="rightbarInfoValue">{getRelationshipStatus(user.relationship)}</span>
                     </div>
                 </div>
                 <h4 className="rightbarTitle">User friends</h4>
@@ -77,7 +78,7 @@ export default function Rightbar({ profile }) {
         <div className="rightbar">
             <div className="rightbarWrapper">
                 {
-                    profile ? <ProfileRightBar /> : <HomeRightBar />
+                    user ? <ProfileRightBar /> : <HomeRightBar />
                 }
             </div>
         </div>

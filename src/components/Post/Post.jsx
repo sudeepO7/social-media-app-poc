@@ -1,24 +1,13 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { MoreVert } from "@material-ui/icons"
 import { mUrl } from "../../helpers/Helper"
-import { get } from "../../helpers/Http"
-import { getUser } from "../../helpers/Api"
+import { format } from "timeago.js"
+import { Link } from "react-router-dom"
 import "./post.scss"
 
 export default function Post({ post }) {
-  const [like, setLike] = useState(post.like);
+  const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    get(getUser(post.userId))
-    .then(res => {
-        console.log('getUser | res => ', res);
-        if (res && res.data) {
-          setUser(res.data.user)
-        }
-    })
-  }, [])
 
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
@@ -30,9 +19,11 @@ export default function Post({ post }) {
       <div className="sm-padding-10">
         <div className="postTop">
           <div className="postTopLeft">
-            <img src={user?.profilePicture ? mUrl(user?.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="sm-profile-image-32" />
-            <span className="postUsername">{user?.firstName + ' ' + user?.lastName}</span>
-            <span className="sm-font-size-12">{post.date}</span>
+            <Link to={`profile/${post.userId}`}>
+              <img src={post?.profilePicture ? mUrl(post?.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="sm-profile-image-32" />
+            </Link>
+            <span className="postUsername">{post?.firstName + ' ' + post?.lastName}</span>
+            <span className="sm-font-size-12">{format(post.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />
