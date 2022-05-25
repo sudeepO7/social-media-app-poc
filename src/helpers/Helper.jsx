@@ -14,3 +14,6 @@ export const getRelationshipStatus = code => {
             return 'Single';
     }
 };
+
+// Default error message
+export const defaultError = `Something went wrong. Please try again later.`;

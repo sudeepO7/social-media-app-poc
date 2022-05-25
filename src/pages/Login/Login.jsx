@@ -1,18 +1,38 @@
+import { useRef, useContext } from "react"
+import { AuthContext } from '../../context/AuthContext'
 import LoginHoc from "../../HOC/LoginHoc/LoginHoc"
+import { login } from "../../helpers/apiCalls"
+import { CircularProgress } from "@material-ui/core"
 import "./login.scss"
 
 export default function Login() {
+  const { dispatch, isFetching, error } = useContext(AuthContext);
+  const email = useRef();
+  const password = useRef();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login({
+      email: email.current.value,
+      password: password.current.value
+    }, dispatch);
+  };
+
   return (
       <LoginHoc>
-        <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input type="password" placeholder="Password" className="loginInput" />
-            <button className="loginButton">Log In</button>
+        <form className="loginBox" onSubmit={handleLogin}>
+            <input type="email" placeholder="Email" 
+                  ref={email} className="loginInput" required />
+            <input type="password" placeholder="Password" 
+                   minLength="6" maxLength="25"
+                   ref={password} className="loginInput" required />
+            <button className="loginButton" disabled={isFetching}>{
+              isFetching ? <CircularProgress color="white" size="20px" /> : 'Log In'
+            }</button>
             <span className="loginForgot">Forgot password?</span>
-            <button className="loginRegister">
-                Create a New Account
-            </button>
-        </div>
+            <button className="loginRegister" disabled={isFetching}>{
+              isFetching ? <CircularProgress color="white" size="20px" /> : 'Create a New Account'
+            }</button>
+        </form>
       </LoginHoc>
   )
 }

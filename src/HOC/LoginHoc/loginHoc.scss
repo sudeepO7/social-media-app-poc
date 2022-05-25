@@ -73,3 +73,7 @@
     font-weight: 400;
     cursor: pointer;
 }
+
+.loginButton:disabled, .loginRegister:disabled {
+    cursor: not-allowed;
+}

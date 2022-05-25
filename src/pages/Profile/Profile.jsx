@@ -32,8 +32,8 @@ export default function Profile() {
                 <div className="profileRight">
                     <div className="profileRightTop">
                         <div className="profileCover">
-                            <img src={user.profilePicture ? mUrl(user.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="profileCoverImg" />
-                            <img src={mUrl(user.coverPicture)} alt="" className="profileUserImg sm-profile-image-150" />
+                            <img src={user.coverPicture ? mUrl(user.coverPicture) : mUrl('person/noCover.png')} alt="" className="profileCoverImg" />
+                            <img src={user.profilePicture ? mUrl(user.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="profileUserImg sm-profile-image-150" />
                         </div>
                         <div className="profileInfo">
                             <h4 className="sm-font-size-24">{user.firstName} {user.lastName}</h4>
