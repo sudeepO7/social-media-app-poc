@@ -1,17 +1,31 @@
-import { useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from '../../context/AuthContext'
 import { MoreVert } from "@material-ui/icons"
-import { mUrl } from "../../helpers/Helper"
+import { mUrl, likedUsers } from "../../helpers/Helper"
+import { put } from "../../helpers/Http"
+import { likePost } from "../../helpers/Api"
 import { format } from "timeago.js"
 import { Link } from "react-router-dom"
 import "./post.scss"
 
 export default function Post({ post }) {
+  const { user } = useContext(AuthContext);
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
 
+  useEffect(() => {
+    setIsLiked(post.likes.includes(user._id));
+  }, [user._id, post.likes])
+
   const likeHandler = () => {
-    setLike(isLiked ? like - 1 : like + 1);
-    setIsLiked(!isLiked);
+    put(likePost(post._id), {}, {
+      userId: user._id
+    }).then(res => {
+      if (res && res.data?.success) {
+        setLike(isLiked ? like - 1 : like + 1);
+        setIsLiked(!isLiked);
+      }
+    });
   }
 
   return (
@@ -36,8 +50,8 @@ export default function Post({ post }) {
         <div className="postBottom">
           <div className="postBottomLeft">
             <img className="likeIcon" src={mUrl('like.png')} onClick={likeHandler} alt="" />
-            <img className="likeIcon" src={mUrl('heart.png')} onClick={likeHandler} alt="" />
-            <span className="sm-font-size-15">{like} people like it</span>
+            {/* <img className="likeIcon" src={mUrl('heart.png')} onClick={likeHandler} alt="" /> */}
+            <span className="sm-font-size-15">{likedUsers(like, isLiked)}</span>
           </div>
           <div className="postBottomRight">
             <span className="postCommentCounter">{post.comment} comments</span>

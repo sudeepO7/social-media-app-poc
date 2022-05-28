@@ -1,11 +1,22 @@
 @import "../../global";
 
 .registerBox {
-    height: 450px;
+    height: 650px;
     padding: 20px;
     background: $white;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    .doubleInput {
+        display: flex;
+        .nameFieldLeft {
+            flex: 6;
+            margin-right: 6px;
+        }
+        .nameFieldRight {
+            flex: 6;
+            margin-left: 6px;
+        }
+    }
 }

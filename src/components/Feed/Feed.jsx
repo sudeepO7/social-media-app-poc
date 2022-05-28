@@ -5,7 +5,6 @@ import "./feed.scss"
 // import { Posts } from '../../dummyData'
 
 export default function Feed({ posts }) {
-
     return (
         <div className="feed">
             <div className="feedWrapper sm-padding-20">

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 import "./topbar.scss";
 
 export default function Topbar() {
-    const { appTitle } = useContext(AuthContext);
+    const { appTitle, user } = useContext(AuthContext);
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
@@ -22,8 +22,8 @@ export default function Topbar() {
             </div>
             <div className="topbarRight">
                 <div className="topbarLinks">
-                    <span className="topbarLink">Homepage</span>
-                    <span className="topbarLink">Timeline</span>
+                    <Link to="/" style={{textDecoration: "none"}}><span className="topbarLink">Homepage</span></Link>
+                    <Link to="/profile" style={{textDecoration: "none"}}><span className="topbarLink">Timeline</span></Link>
                 </div>
                 <div className="topbarIcons">
                     <div className="topbarIconItem">
@@ -39,7 +39,9 @@ export default function Topbar() {
                         <span className="topbarIconBadge">1</span>
                     </div>
                 </div>
-                <img src={mUrl('person/1.jpeg')} alt="img" className="sm-profile-image-32 topbarProfileImg" />
+                <Link to="/profile" style={{textDecoration: "none"}}>
+                    <img src={user.profilePicture ? mUrl(user.profilePicture) : mUrl('person/noAvatar.png')} alt="img" className="sm-profile-image-32 topbarProfileImg" />
+                </Link>
             </div>
         </div>
     )

@@ -17,3 +17,15 @@ export const getRelationshipStatus = code => {
 
 // Default error message
 export const defaultError = `Something went wrong. Please try again later.`;
+
+// Get liked users text
+export const likedUsers = (count, isLiked) => {
+    if (count === 0)
+        return ``
+    else if (isLiked && count > 1)
+        return `You and ${count-1} other like this`
+    else if (isLiked && count === 1)
+        return `You like this`
+    else
+        return `${count} people like this`
+};

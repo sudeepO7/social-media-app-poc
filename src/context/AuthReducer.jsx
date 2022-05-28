@@ -1,8 +1,10 @@
-import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } from './AuthTypes'
+import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE,
+        REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from './AuthTypes'
 
 const AuthReducer = (state, action) => {
     switch (action.type) {
         case LOGIN_START:
+        case REGISTER_START:
             return {
                 ...state,
                 user: null,
@@ -19,11 +21,20 @@ const AuthReducer = (state, action) => {
             };
             
         case LOGIN_FAILURE:
+        case REGISTER_FAILURE:
             return {
                 ...state,
                 user: null,
                 isFetching: false,
                 error: action.payload
+            };
+
+        case REGISTER_SUCCESS:
+            return {
+                ...state,
+                user: null,
+                isFetching: false,
+                error: false
             };
     
         default:

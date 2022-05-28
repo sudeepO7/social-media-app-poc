@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from '../../context/AuthContext'
 import FeedHoc from "../../HOC/FeedHoc/FeedHoc"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import Feed from "../../components/Feed/Feed"
@@ -9,16 +10,18 @@ import { getTimeline } from "../../helpers/Api"
 import "./home.scss"
 
 export default function Home() {
+    const { user } = useContext(AuthContext);
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        get(getTimeline('624c2c9287d8ad52f56938c8'))
-        .then(res => {
-            if (res && res.data) {
-                setPosts(res.data.posts);
-            }
-        })
-    }, [])
+        if (user)
+            get(getTimeline(user._id))
+            .then(res => {
+                if (res && res.data) {
+                    setPosts(res.data.posts);
+                }
+            })
+    }, [user?._id])
     return (
         <FeedHoc>
             <div className="homeContainer">
