@@ -2,25 +2,41 @@ import { useContext, useRef, useState } from "react"
 import { AuthContext } from '../../context/AuthContext'
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
 import { mUrl } from "../../helpers/Helper"
-import { createPost } from "../../helpers/Api"
+import { createPost, uploadFile } from "../../helpers/Api"
 import { post } from "../../helpers/Http"
+import Toast from "../../components/Toast/Toast"
 import "./share.scss"
 
-export default function Share() {
+export default function Share({ onPostUpload, username }) {
     const { user } = useContext(AuthContext);
     const [file, setFile] = useState(null);
+    const [ showToast, setShowToast ] = useState(false);
     const desc = useRef();
+    const toastMessage = {
+        message: `Post uploaded successfully`,
+        handleClose: () => setShowToast(false),
+        severity: 'success'
+    };
 
-    const handleShare = (e) => {
+    const handleShare = async (e) => {
         e.preventDefault();
         if (desc.current.value || file) {
+            let filename;
+            if (file) {
+                const formData = new FormData();
+                filename = `${Date.now()}_${user._id}_${file.name}`;
+                formData.append('name', filename);
+                formData.append('file', file);
+                await post(uploadFile(), {}, formData);
+            }
             post(createPost(), {}, {
                 userId: user._id,
                 desc: desc.current.value,
-                img: file || null
+                img: file ? filename : null
             }).then(res => {
                 if (res && res.data?.success) {
-                    
+                    setShowToast(true);
+                    setTimeout(() => onPostUpload(), 2000);
                 }
             })
         }
@@ -40,7 +56,7 @@ export default function Share() {
                             <PermMedia htmlColor="tomato" className="shareIcon" />
                             <span className="shareOptionText">Photo or video</span>
                             <input type="file" id="file" accept=".png,.jpeg,.jpg" 
-                                   style={{display: 'none'}} onChange={(e) => setFile(e.target.files[0])} />
+                                style={{display: 'none'}} onChange={(e) => setFile(e.target.files[0])} />
                         </label>
                         <div className="shareOption">
                             <Label htmlColor="blue" className="shareIcon" />
@@ -55,9 +71,10 @@ export default function Share() {
                             <span className="shareOptionText">Feeling</span>
                         </div>
                     </div>
-                    <div className="shareButton" type="submit">Share</div>
+                    <button className="shareButton">Share</button>
                 </form>
             </div>
+            <Toast open={showToast} {...toastMessage} />
         </div>
     )
 }

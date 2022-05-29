@@ -1,9 +1,27 @@
-import "./rightbar.scss";
+import { useEffect, useContext, useState } from "react"
 import Online from "../Online/Online"
 import { getRelationshipStatus } from "../../helpers/Helper"
-import { Users } from "../../dummyData"
+import { AuthContext } from '../../context/AuthContext'
+import { mUrl } from "../../helpers/Helper"
+import { getFriends } from "../../helpers/Api"
+import { get } from "../../helpers/Http"
+import { Link } from "react-router-dom"
+// import { Users } from "../../dummyData"
+import "./rightbar.scss"
 
 export default function Rightbar({ user }) {
+    const [friendsList, setFriendsList] = useState([]);
+    const { user: currentUser } = useContext(AuthContext);
+
+    useEffect(() => {
+        const userId = user ? user._id : currentUser._id;
+        get(getFriends(userId))
+        .then(res => {
+            if (res && res.data?.friends) {
+                setFriendsList(res.data?.friends);
+            }
+        });
+    }, [user?._id, currentUser?._id])
 
     const HomeRightBar = () => {
         return (
@@ -16,8 +34,8 @@ export default function Rightbar({ user }) {
                 <h4 className="sm-bottom-margin-20">Online Friends</h4>
                 <ul className="sm-list-style">
                     {
-                        Users.map(u => (
-                            <Online key={u.id} user={u} />
+                        friendsList.map(u => (
+                            <Online key={u._id} user={u} />
                         ))
                     }
                 </ul>
@@ -45,30 +63,16 @@ export default function Rightbar({ user }) {
                 </div>
                 <h4 className="rightbarTitle">User friends</h4>
                 <div className="rightbarFollowings">
-                    <div className="rightbarFollowing">
-                        <img src="/assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">John Carter</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="/assets/person/3.jpeg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Bruce Willis</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="/assets/person/4.jpeg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Jim Carrey</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="/assets/person/7.jpeg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Mat Damon</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="/assets/person/5.jpeg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Tom Cruise</span>
-                    </div>
-                    <div className="rightbarFollowing">
-                        <img src="/assets/person/6.jpeg" alt="" className="rightbarFollowingImg" />
-                        <span className="rightbarFollowingName">Nicolas Cage</span>
-                    </div>
+                    {
+                        friendsList.map(u => (
+                            <div className="rightbarFollowing" key={u._id}>
+                                <Link to={`/profile/${u.username}`} style={{textDecoration: "none"}}>
+                                    <img src={mUrl(u.profilePicture)} alt="" className="rightbarFollowingImg" />
+                                </Link>
+                                <span className="rightbarFollowingName">{u.username}</span>
+                            </div>
+                        ))
+                    }
                 </div>
             </>
         )

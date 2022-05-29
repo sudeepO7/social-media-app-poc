@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../context/AuthContext'
 import FeedHoc from "../../HOC/FeedHoc/FeedHoc"
@@ -7,7 +7,7 @@ import Feed from "../../components/Feed/Feed"
 import Rightbar from "../../components/Rightbar/Rightbar"
 import { get } from "../../helpers/Http"
 import { mUrl } from "../../helpers/Helper";
-import { getTimeline, getProfile } from "../../helpers/Api"
+import { getProfile } from "../../helpers/Api"
 import "./profile.scss"
 
 export default function Profile() {
@@ -16,17 +16,19 @@ export default function Profile() {
     const [posts, setPosts] = useState([]);
     const { username } = useParams();
 
-    useEffect(() => {
-        get(username ?
-            getProfile(username) :
-            getTimeline(user._id))
+    const getPosts = () => {
+        get(getProfile(username ? username : user.username))
         .then(res => {
             if (res && res.data) {
                 setPosts(res.data.posts);
                 setUserData(res.data.user);
             }
         })
-    }, [username, user._id])
+    }
+
+    useEffect(() => {
+        getPosts();
+    }, [username, user?.username])
     return (
         <FeedHoc>
             <div className="profileContainer">
@@ -43,7 +45,7 @@ export default function Profile() {
                         </div>
                     </div>
                     <div className="profileRightBottom">
-                        <Feed posts={posts} />
+                        <Feed posts={posts} onPostUpload={getPosts} />
                         <Rightbar user={userData} />
                     </div>
                 </div>

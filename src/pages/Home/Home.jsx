@@ -13,20 +13,24 @@ export default function Home() {
     const { user } = useContext(AuthContext);
     const [posts, setPosts] = useState([]);
 
+    const getPosts = () => {
+        get(getTimeline(user._id))
+        .then(res => {
+            if (res && res.data) {
+                setPosts(res.data.posts);
+            }
+        })
+    }
+
     useEffect(() => {
         if (user)
-            get(getTimeline(user._id))
-            .then(res => {
-                if (res && res.data) {
-                    setPosts(res.data.posts);
-                }
-            })
+            getPosts()
     }, [user?._id])
     return (
         <FeedHoc>
             <div className="homeContainer">
                 <Sidebar />
-                <Feed posts={posts} />
+                <Feed posts={posts} onPostUpload={getPosts} />
                 <Rightbar />
             </div>
         </FeedHoc>
