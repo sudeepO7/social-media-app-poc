@@ -29,3 +29,6 @@ export const likedUsers = (count, isLiked) => {
     else
         return `${count} people like this`
 };
+
+// Get profile picture url
+export const dpUrl = profilePicture => profilePicture ? mUrl(profilePicture) : mUrl('person/noAvatar.png');

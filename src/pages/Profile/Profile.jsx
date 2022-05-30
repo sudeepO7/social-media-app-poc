@@ -6,7 +6,7 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import Feed from "../../components/Feed/Feed"
 import Rightbar from "../../components/Rightbar/Rightbar"
 import { get } from "../../helpers/Http"
-import { mUrl } from "../../helpers/Helper";
+import { mUrl, dpUrl } from "../../helpers/Helper";
 import { getProfile } from "../../helpers/Api"
 import "./profile.scss"
 
@@ -37,7 +37,7 @@ export default function Profile() {
                     <div className="profileRightTop">
                         <div className="profileCover">
                             <img src={userData.coverPicture ? mUrl(userData.coverPicture) : mUrl('person/noCover.png')} alt="" className="profileCoverImg" />
-                            <img src={userData.profilePicture ? mUrl(userData.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="profileUserImg sm-profile-image-150" />
+                            <img src={dpUrl(userData.profilePicture)} alt="" className="profileUserImg sm-profile-image-150" />
                         </div>
                         <div className="profileInfo">
                             <h4 className="sm-font-size-24">{userData.firstName} {userData.lastName}</h4>

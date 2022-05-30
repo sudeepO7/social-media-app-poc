@@ -14,7 +14,7 @@ export default function Feed({ posts, onPostUpload }) {
         <div className="feed">
             <div className="feedWrapper sm-padding-20">
                 {
-                    (!username || user.username === username) ? <Share onPostUpload={onPostUpload} username={username} /> : null
+                    (!username || user.username === username) ? <Share onPostUpload={onPostUpload} /> : null
                 }
                 {
                     posts.map(p => (

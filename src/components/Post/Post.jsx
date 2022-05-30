@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../context/AuthContext'
 import { MoreVert } from "@material-ui/icons"
-import { mUrl, likedUsers } from "../../helpers/Helper"
+import { mUrl, likedUsers, dpUrl } from "../../helpers/Helper"
 import { put } from "../../helpers/Http"
 import { likePost } from "../../helpers/Api"
 import { format } from "timeago.js"
@@ -34,7 +34,7 @@ export default function Post({ post }) {
         <div className="postTop">
           <div className="postTopLeft">
             <Link to={`profile/${post.userId}`}>
-              <img src={post?.profilePicture ? mUrl(post?.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="sm-profile-image-32" />
+              <img src={dpUrl(post?.profilePicture)} alt="" className="sm-profile-image-32" />
             </Link>
             <span className="postUsername">{post?.firstName + ' ' + post?.lastName}</span>
             <span className="sm-font-size-12">{format(post.createdAt)}</span>

@@ -1,13 +1,13 @@
 import { useContext, useRef, useState } from "react"
 import { AuthContext } from '../../context/AuthContext'
 import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
-import { mUrl } from "../../helpers/Helper"
+import { dpUrl } from "../../helpers/Helper"
 import { createPost, uploadFile } from "../../helpers/Api"
 import { post } from "../../helpers/Http"
 import Toast from "../../components/Toast/Toast"
 import "./share.scss"
 
-export default function Share({ onPostUpload, username }) {
+export default function Share({ onPostUpload }) {
     const { user } = useContext(AuthContext);
     const [file, setFile] = useState(null);
     const [ showToast, setShowToast ] = useState(false);
@@ -46,7 +46,7 @@ export default function Share({ onPostUpload, username }) {
         <div className="share">
             <div className="shareWrapper sm-padding-10">
                 <div className="shareTop">
-                    <img src={user.profilePicture ? mUrl(user.profilePicture) : mUrl('person/noAvatar.png')} alt="" className="sm-profile-image-50 shareProfileImg" />
+                    <img src={dpUrl(user.profilePicture)} alt="" className="sm-profile-image-50 shareProfileImg" />
                     <input placeholder="What's in your mind" ref={desc} className="shareInput" />
                 </div>
                 <hr className="sm-margin-20" />

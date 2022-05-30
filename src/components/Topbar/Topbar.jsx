@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Search, Person, Chat, Notifications } from "@material-ui/icons"
 import { AuthContext } from '../../context/AuthContext'
-import { mUrl } from "../../helpers/Helper"
+import { dpUrl } from "../../helpers/Helper"
 import { Link } from "react-router-dom"
 import "./topbar.scss";
 
@@ -40,7 +40,7 @@ export default function Topbar() {
                     </div>
                 </div>
                 <Link to="/profile" style={{textDecoration: "none"}}>
-                    <img src={user.profilePicture ? mUrl(user.profilePicture) : mUrl('person/noAvatar.png')} alt="img" className="sm-profile-image-32 topbarProfileImg" />
+                    <img src={dpUrl(user.profilePicture)} alt="img" className="sm-profile-image-32 topbarProfileImg" />
                 </Link>
             </div>
         </div>

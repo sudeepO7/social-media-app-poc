@@ -3,7 +3,7 @@ import { User } from "../dummyData"
 import AuthReducer from './AuthReducer';
 
 const INITIAL_STATE = {
-    user: null,
+    user: User,
     isFetching: false,
     error: false,
     appTitle: process.env.REACT_APP_TITLE

@@ -2,7 +2,7 @@ import { useEffect, useContext, useState } from "react"
 import Online from "../Online/Online"
 import { getRelationshipStatus } from "../../helpers/Helper"
 import { AuthContext } from '../../context/AuthContext'
-import { mUrl } from "../../helpers/Helper"
+import { dpUrl } from "../../helpers/Helper"
 import { getFriends } from "../../helpers/Api"
 import { get } from "../../helpers/Http"
 import { Link } from "react-router-dom"
@@ -67,7 +67,7 @@ export default function Rightbar({ user }) {
                         friendsList.map(u => (
                             <div className="rightbarFollowing" key={u._id}>
                                 <Link to={`/profile/${u.username}`} style={{textDecoration: "none"}}>
-                                    <img src={mUrl(u.profilePicture)} alt="" className="rightbarFollowingImg" />
+                                    <img src={dpUrl(u.profilePicture)} alt="" className="rightbarFollowingImg" />
                                 </Link>
                                 <span className="rightbarFollowingName">{u.username}</span>
                             </div>
