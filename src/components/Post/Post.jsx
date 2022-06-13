@@ -33,7 +33,7 @@ export default function Post({ post }) {
       <div className="sm-padding-10">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${post.userId}`}>
+            <Link to={`profile/${post.username}`}>
               <img src={dpUrl(post?.profilePicture)} alt="" className="sm-profile-image-32" />
             </Link>
             <span className="postUsername">{post?.firstName + ' ' + post?.lastName}</span>

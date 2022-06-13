@@ -1,7 +1,8 @@
 import { LoginStart, LoginSuccess, LoginFailure,
-        RegisterStart, RegisterSuccess, RegisterFailure } from "../context/AuthActions"
-import { userLogin, userRegister } from "./Api"
-import { post } from "./Http"
+        RegisterStart, RegisterSuccess, RegisterFailure,
+        Follow, Unfollow } from "../context/AuthActions"
+import { userLogin, userRegister, followUser, unfollowUser } from "./Api"
+import { post, put } from "./Http"
 import { defaultError } from "./Helper"
 
 export const login = async (loginCred, dispatch) => {
@@ -42,5 +43,39 @@ export const register = async (userDetails, dispatch, cb) => {
         })
     } catch(err) {
         dispatch(RegisterFailure(err));
+    }
+}
+
+export const follow = async (userId, currentUserId, dispatch) => {
+    try {
+        put(followUser(userId), {}, {
+            userId: currentUserId
+        })
+        .then(res => {
+            if (res && res.data.success) {
+                dispatch(Follow(userId));
+            }
+        }).catch(err => {
+            console.log('Follow => ', err);
+        })
+    } catch(err) {
+        console.log('Follow => ', err);
+    }
+}
+
+export const unfollow = async (userId, currentUserId, dispatch) => {
+    try {
+        put(unfollowUser(userId), {}, {
+            userId: currentUserId
+        })
+        .then(res => {
+            if (res && res.data.success) {
+                dispatch(Unfollow(userId));
+            }
+        }).catch(err => {
+            console.log('Unfollow => ', err);
+        })
+    } catch(err) {
+        console.log('Unfollow => ', err);
     }
 }

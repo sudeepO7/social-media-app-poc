@@ -7,3 +7,5 @@ export const getProfile = username => `/posts/profile/${username}`;
 export const createPost = () => `/posts`;
 export const likePost = postId => `/posts/${postId}/like`;
 export const uploadFile = () => `/upload`;
+export const followUser = userId => `/users/${userId}/follow`;
+export const unfollowUser = userId => `/users/${userId}/unfollow`;

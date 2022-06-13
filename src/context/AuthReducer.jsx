@@ -1,5 +1,6 @@
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE,
-        REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from './AuthTypes'
+        REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE,
+        FOLLOW, UNFOLLOW, LOGOUT } from './AuthTypes'
 
 const AuthReducer = (state, action) => {
     switch (action.type) {
@@ -35,6 +36,35 @@ const AuthReducer = (state, action) => {
                 user: null,
                 isFetching: false,
                 error: false
+            };
+
+        case FOLLOW:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    following: [
+                        ...state.user.following,
+                        action.payload
+                    ]
+                }
+            };
+
+        case UNFOLLOW:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    following: state.user.following.filter(uId => uId !== action.payload)
+                }
+            };
+
+        case LOGOUT:
+            return {
+                ...state,
+                user: null,
+                isFetching: false,
+                error: null
             };
     
         default:

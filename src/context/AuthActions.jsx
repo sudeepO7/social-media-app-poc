@@ -1,5 +1,6 @@
 import { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE,
-        REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE } from './AuthTypes'
+        REGISTER_START, REGISTER_SUCCESS, REGISTER_FAILURE,
+        FOLLOW, UNFOLLOW, LOGOUT } from './AuthTypes'
 
 export const LoginStart = () => ({
     type: LOGIN_START
@@ -26,4 +27,18 @@ export const RegisterSuccess = () => ({
 export const RegisterFailure = (error) => ({
     type: REGISTER_FAILURE,
     payload: error
+})
+
+export const Follow = (userId) => ({
+    type: FOLLOW,
+    payload: userId
+})
+
+export const Unfollow = (userId) => ({
+    type: UNFOLLOW,
+    payload: userId
+})
+
+export const Logout = () => ({
+    type: LOGOUT
 })

@@ -56,7 +56,6 @@
 .rightbarFollowings {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
 .rightbarFollowing {
@@ -64,4 +63,28 @@
     flex-direction: column;
     margin-bottom: 20px;
     cursor: pointer;
+    margin-left: 10px;
+}
+
+.rightbarFollowingName {
+    display: block;
+}
+
+.rightbarFollowButton {
+    margin-bottom: 10px;
+    margin-top: 30px;
+    border: none;
+    background-color: $fbBlue;
+    color: $white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.rightbarFollowButton:focus {
+    outline: none;
 }

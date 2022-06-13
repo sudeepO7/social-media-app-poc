@@ -1,20 +1,27 @@
-import "./sidebar.scss";
 import { 
     RssFeed, 
-    School, 
     Event, 
     HelpOutline, 
     WorkOutline, 
     PlayCircleFilledOutlined,
     Group,
     Bookmark,
-    Chat
+    Chat,
+    ExitToApp
 } from "@material-ui/icons"
-
+import { useContext } from "react"
+import { AuthContext } from "../../context/AuthContext"
+import { Logout } from "../../context/AuthActions"
 import CloseFriend from "../CloseFriend/CloseFriend"
 import { Users } from "../../dummyData"
+import "./sidebar.scss";
 
 export default function Sidebar() {
+    const { dispatch } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        dispatch(Logout());
+    }
     return (
         <div className="sidebar">
             <div className="sm-padding-20">
@@ -51,9 +58,9 @@ export default function Sidebar() {
                         <Event className="sidebarIcon" />
                         <span className="sidebarListItemText">Events</span>
                     </li>
-                    <li className="sidebarListItem">
-                        <School className="sidebarIcon" />
-                        <span className="sidebarListItemText">Courses</span>
+                    <li className="sidebarListItem" onClick={handleLogout}>
+                        <ExitToApp className="sidebarIcon" />
+                        <span className="sidebarListItemText">Log out</span>
                     </li>
                 </ul>
                 <button className="sidebarButton">Show More</button>

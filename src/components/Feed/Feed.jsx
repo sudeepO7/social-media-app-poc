@@ -5,8 +5,6 @@ import Share from "../Share/Share"
 import Post from "../Post/Post"
 import "./feed.scss"
 
-// import { Posts } from '../../dummyData'
-
 export default function Feed({ posts, onPostUpload }) {
     const { user } = useContext(AuthContext);
     const { username } = useParams();

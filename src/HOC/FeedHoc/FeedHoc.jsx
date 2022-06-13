@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 export default function FeedHoc({ children }) {
   const { user } = useContext(AuthContext);
+
   const CommonFeed = () => (
     <>
         <Topbar />

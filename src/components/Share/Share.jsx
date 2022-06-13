@@ -1,6 +1,6 @@
 import { useContext, useRef, useState } from "react"
 import { AuthContext } from '../../context/AuthContext'
-import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import { PermMedia, Label, Room, EmojiEmotions, Cancel } from "@material-ui/icons";
 import { dpUrl } from "../../helpers/Helper"
 import { createPost, uploadFile } from "../../helpers/Api"
 import { post } from "../../helpers/Http"
@@ -9,7 +9,7 @@ import "./share.scss"
 
 export default function Share({ onPostUpload }) {
     const { user } = useContext(AuthContext);
-    const [file, setFile] = useState(null);
+    const [ file, setFile ] = useState(null);
     const [ showToast, setShowToast ] = useState(false);
     const desc = useRef();
     const toastMessage = {
@@ -17,6 +17,15 @@ export default function Share({ onPostUpload }) {
         handleClose: () => setShowToast(false),
         severity: 'success'
     };
+
+    const UploadedImage = () => {
+        return (
+            <div className="uploadedImgContainer">
+                <img src={URL.createObjectURL(file)} alt="" className="uploadedImg" />
+                <Cancel className="uploadedImgCancel" onClick={() => setFile(null)} />
+            </div>
+        );
+    }
 
     const handleShare = async (e) => {
         e.preventDefault();
@@ -36,6 +45,8 @@ export default function Share({ onPostUpload }) {
             }).then(res => {
                 if (res && res.data?.success) {
                     setShowToast(true);
+                    desc.current.value = null;
+                    setFile(null);
                     setTimeout(() => onPostUpload(), 2000);
                 }
             })
@@ -50,6 +61,9 @@ export default function Share({ onPostUpload }) {
                     <input placeholder="What's in your mind" ref={desc} className="shareInput" />
                 </div>
                 <hr className="sm-margin-20" />
+                {
+                    file && <UploadedImage />
+                }
                 <form className="shareBottom" onSubmit={handleShare}>
                     <div className="shareOptions">
                         <label htmlFor="file" className="shareOption">
