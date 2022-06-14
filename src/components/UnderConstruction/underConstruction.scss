@@ -1,0 +1,24 @@
+@import "../../global";
+
+.underConstructionWrapper {
+    padding: 15px 10px;
+}
+
+.underConstructionImg {
+    width: 70%;
+    height: 80vh;
+    margin: auto;
+    display: inherit;
+}
+
+.underConstructionBack {
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: $fbBlue;
+    text-decoration: underline;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+}

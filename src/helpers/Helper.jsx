@@ -32,3 +32,25 @@ export const likedUsers = (count, isLiked) => {
 
 // Get profile picture url
 export const dpUrl = profilePicture => profilePicture ? mUrl(profilePicture) : mUrl('person/noAvatar.png');
+
+// Store in local storage
+export const setStorage = (key, value) => {
+    if (value && typeof value === 'object')
+        sessionStorage.setItem(key, JSON.stringify(value));
+};
+
+// Get from local storage
+export const getStorage = (key) => {
+    const value = sessionStorage.getItem(key);
+    return value ? JSON.parse(value) : null;
+};
+
+// Remove from local storage
+export const removeStorage = (key) => {
+    sessionStorage.removeItem(key);
+};
+
+// Contant keys
+export const KEYS = {
+    CURRENT_USER: 'currentUser'
+}

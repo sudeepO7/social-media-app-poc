@@ -86,7 +86,7 @@ export const Users = [
 
 export const Posts = [
   {
-    id: 1,
+    _id: 1,
     desc: "Love For All, Hatred For None.",
     photo: "post/1.jpeg",
     date: "5 mins ago",
@@ -95,7 +95,7 @@ export const Posts = [
     comment: 9,
   },
   {
-    id: 2,
+    _id: 2,
     photo: "post/2.jpeg",
     date: "15 mins ago",
     userId: 2,
@@ -103,7 +103,7 @@ export const Posts = [
     comment: 1,
   },
   {
-    id: 3,
+    _id: 3,
     desc: "Every moment is a fresh beginning.",
     photo: "post/3.jpeg",
     date: "1 hour ago",
@@ -112,7 +112,7 @@ export const Posts = [
     comment: 2,
   },
   {
-    id: 4,
+    _id: 4,
     photo: "post/4.jpeg",
     date: "4 hours ago",
     userId: 4,
@@ -120,7 +120,7 @@ export const Posts = [
     comment: 3,
   },
   {
-    id: 5,
+    _id: 5,
     photo: "post/5.jpeg",
     date: "5 hours ago",
     userId: 5,
@@ -128,7 +128,7 @@ export const Posts = [
     comment: 5,
   },
   {
-    id: 6,
+    _id: 6,
     photo: "post/6.jpeg",
     date: "1 day ago",
     userId: 6,
@@ -136,7 +136,7 @@ export const Posts = [
     comment: 6,
   },
   {
-    id: 7,
+    _id: 7,
     desc: "Never regret anything that made you smile.",
     photo: "post/7.jpeg",
     date: "2 days ago",
@@ -145,7 +145,7 @@ export const Posts = [
     comment: 3,
   },
   {
-    id: 8,
+    _id: 8,
     photo: "post/8.jpeg",
     date: "3 days ago",
     userId: 8,
@@ -153,7 +153,7 @@ export const Posts = [
     comment: 1,
   },
   {
-    id: 9,
+    _id: 9,
     desc: "Change the world by being yourself.",
     photo: "post/9.jpeg",
     date: "5 days ago",
@@ -162,7 +162,7 @@ export const Posts = [
     comment: 2,
   },
   {
-    id: 10,
+    _id: 10,
     photo: "post/10.jpeg",
     date: "1 week ago",
     userId: 10,

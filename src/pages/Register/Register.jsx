@@ -60,10 +60,10 @@ export default function Register() {
         <input type="password" ref={passwordAgain} placeholder="Password Again" 
                minLength="6" maxLength="25" className="loginInput" required />
         <button className="loginButton" disabled={isFetching}>{
-            isFetching ? <CircularProgress color="white" size="20px" /> : 'Sign Up'
+            isFetching ? <CircularProgress color="inherit" size="20px" /> : 'Sign Up'
         }</button>
         <button className="loginRegister" type="button" disabled={isFetching} onClick={handleClick}>{
-            isFetching ? <CircularProgress color="white" size="20px" /> : 'Log into Account'
+            isFetching ? <CircularProgress color="inherit" size="20px" /> : 'Log into Account'
         }</button>
       </form>
     );

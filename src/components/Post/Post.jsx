@@ -10,12 +10,12 @@ import "./post.scss"
 
 export default function Post({ post }) {
   const { user } = useContext(AuthContext);
-  const [like, setLike] = useState(post.likes.length);
+  const [like, setLike] = useState(post.likes?.length);
   const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    setIsLiked(post.likes.includes(user._id));
-  }, [user._id, post.likes])
+    setIsLiked(post.likes?.includes(user?._id));
+  }, [user?._id, post.likes])
 
   const likeHandler = () => {
     put(likePost(post._id), {}, {

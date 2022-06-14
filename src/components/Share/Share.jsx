@@ -57,7 +57,7 @@ export default function Share({ onPostUpload }) {
         <div className="share">
             <div className="shareWrapper sm-padding-10">
                 <div className="shareTop">
-                    <img src={dpUrl(user.profilePicture)} alt="" className="sm-profile-image-50 shareProfileImg" />
+                    <img src={dpUrl(user?.profilePicture)} alt="" className="sm-profile-image-50 shareProfileImg" />
                     <input placeholder="What's in your mind" ref={desc} className="shareInput" />
                 </div>
                 <hr className="sm-margin-20" />

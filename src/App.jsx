@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home"
 import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
+import UnderConstruction from "./components/UnderConstruction/UnderConstruction"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register"  element={<Register />} />
         <Route path="/profile"  element={<Profile />} />
         <Route path="/profile/:username"  element={<Profile />} />
+        <Route path="/under-construction"  element={<UnderConstruction />} />
       </Routes>
     </Router>
   );

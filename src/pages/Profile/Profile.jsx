@@ -17,13 +17,15 @@ export default function Profile() {
     const { username } = useParams();
 
     const getPosts = () => {
-        get(getProfile(username ? username : user.username))
-        .then(res => {
-            if (res && res.data) {
-                setPosts(res.data.posts);
-                setUserData(res.data.user);
-            }
-        })
+        const userName = username ? username : user?.username;
+        if (userName)
+            get(getProfile(userName))
+            .then(res => {
+                if (res && res.data) {
+                    setPosts(res.data.posts);
+                    setUserData(res.data.user);
+                }
+            })
     }
 
     useEffect(() => {

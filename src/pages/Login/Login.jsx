@@ -31,11 +31,11 @@ export default function Login() {
                   minLength="6" maxLength="25"
                   ref={password} className="loginInput" required />
           <button className="loginButton" disabled={isFetching}>{
-            isFetching ? <CircularProgress color="white" size="20px" /> : 'Log In'
+            isFetching ? <CircularProgress color="inherit" size="20px" /> : 'Log In'
           }</button>
           <span className="loginForgot">Forgot password?</span>
           <button className="loginRegister" type="button" disabled={isFetching} onClick={handleClick}>{
-            isFetching ? <CircularProgress color="white" size="20px" /> : 'Create a New Account'
+            isFetching ? <CircularProgress color="inherit" size="20px" /> : 'Create a New Account'
           }</button>
       </form>
     );

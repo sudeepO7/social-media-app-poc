@@ -40,7 +40,7 @@ export default function Topbar() {
                     </div>
                 </div>
                 <Link to="/profile" style={{textDecoration: "none"}}>
-                    <img src={dpUrl(user.profilePicture)} alt="img" className="sm-profile-image-32 topbarProfileImg" />
+                    <img src={dpUrl(user?.profilePicture)} alt="img" className="sm-profile-image-32 topbarProfileImg" />
                 </Link>
             </div>
         </div>
