@@ -33,54 +33,74 @@ export const User = {
 
 export const Users = [
   {
-    id:1,
+    _id:1,
     profilePicture: "person/1.jpeg",
     username: "Safak Kocaoglu",
+    firstName: "Safak",
+    lastName: "Kocaoglu"
   },
   {
-    id:2,
+    _id:2,
     profilePicture: "person/2.jpeg",
     username: "Janell Shrum",
+    firstName: "Janell",
+    lastName: "Shrum"
   },
   {
-    id:3,
+    _id:3,
     profilePicture: "person/3.jpeg",
     username: "Alex Durden",
+    firstName: "Alex",
+    lastName: "Durden"
   },
   {
-    id:4,
+    _id:4,
     profilePicture: "person/4.jpeg",
     username: "Dora Hawks",
+    firstName: "Dora",
+    lastName: "Hawks"
   },
   {
-    id:5,
+    _id:5,
     profilePicture: "person/5.jpeg",
     username: "Thomas Holden",
+    firstName: "Thomas",
+    lastName: "Holden"
   },
   {
-    id:6,
+    _id:6,
     profilePicture: "person/6.jpeg",
     username: "Shirley Beauchamp",
+    firstName: "Shirley",
+    lastName: "Beauchamp"
   },
   {
-    id:7,
+    _id:7,
     profilePicture: "person/7.jpeg",
     username: "Travis Bennett",
+    firstName: "Travis",
+    lastName: "Bennett"
   },
   {
-    id:8,
+    _id:8,
     profilePicture: "person/8.jpeg",
     username: "Kristen Thomas",
+    firstName: "Kristen",
+    lastName: "Thomas"
   },
   {
-    id:9,
+    _id:9,
     profilePicture: "person/9.jpeg",
     username: "Gary Duty",
+    firstName: "Gary",
+    lastName: "Duty"
   },
   {
-    id:10,
+    _id:10,
     profilePicture: "person/10.jpeg",
     username: "Safak Kocaoglu",
+    firstName: "Safak",
+    lastName: "Kocaoglu"
   },
 ];
 
@@ -88,85 +108,125 @@ export const Posts = [
   {
     _id: 1,
     desc: "Love For All, Hatred For None.",
-    photo: "post/1.jpeg",
+    img: "post/1.jpeg",
     date: "5 mins ago",
     userId: 1,
-    like: 32,
+    likes: [32, 33, 35],
     comment: 9,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 2,
-    photo: "post/2.jpeg",
+    img: "post/2.jpeg",
     date: "15 mins ago",
     userId: 2,
-    like: 2,
+    likes: [32, 33, 35, 88],
     comment: 1,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 3,
     desc: "Every moment is a fresh beginning.",
-    photo: "post/3.jpeg",
+    img: "post/3.jpeg",
     date: "1 hour ago",
     userId: 3,
-    like: 61,
+    likes: [32, 33, 35, 55, 76],
     comment: 2,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 4,
-    photo: "post/4.jpeg",
+    img: "post/4.jpeg",
     date: "4 hours ago",
     userId: 4,
-    like: 7,
+    likes: [33, 35],
     comment: 3,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 5,
-    photo: "post/5.jpeg",
+    img: "post/5.jpeg",
     date: "5 hours ago",
     userId: 5,
-    like: 23,
+    likes: [32, 33, 35],
     comment: 5,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 6,
-    photo: "post/6.jpeg",
+    img: "post/6.jpeg",
     date: "1 day ago",
     userId: 6,
-    like: 44,
+    likes: [32, 21, 35, 82],
     comment: 6,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 7,
     desc: "Never regret anything that made you smile.",
-    photo: "post/7.jpeg",
+    img: "post/7.jpeg",
     date: "2 days ago",
     userId: 7,
-    like: 52,
+    likes: [32, 41, 90, 7],
     comment: 3,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 8,
-    photo: "post/8.jpeg",
+    img: "post/8.jpeg",
     date: "3 days ago",
     userId: 8,
-    like: 15,
+    likes: [],
     comment: 1,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 9,
     desc: "Change the world by being yourself.",
-    photo: "post/9.jpeg",
+    img: "post/9.jpeg",
     date: "5 days ago",
     userId: 9,
-    like: 11,
+    likes: [32, 33, 35],
     comment: 2,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
   {
     _id: 10,
-    photo: "post/10.jpeg",
+    img: "post/10.jpeg",
     date: "1 week ago",
     userId: 10,
-    like: 104,
+    likes: [32, 33, 35, 5, 12, 45],
     comment: 12,
+    username: "sudeep07",
+    profilePicture: "post/1.jpeg",
+    firstName: "Sudeep",
+    lastName: "Mukherjee"
   },
 ];

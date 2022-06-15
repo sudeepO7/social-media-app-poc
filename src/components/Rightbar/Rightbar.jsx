@@ -13,16 +13,15 @@ import "./rightbar.scss"
 export default function Rightbar({ user }) {
     const [friendsList, setFriendsList] = useState([]);
     const { user: currentUser, dispatch } = useContext(AuthContext);
-    const followed = currentUser.following.includes(user?._id);
+    const followed = currentUser?.following?.includes(user?._id);
 
     useEffect(() => {
-        const userId = user ? user._id : currentUser._id;
+        const userId = user ? user._id : currentUser?._id;
         if (userId)
             get(getFriends(userId))
             .then(res => {
-                if (res && res.data?.friends) {
+                if (res && res.data?.friends)
                     setFriendsList(res.data?.friends);
-                }
             });
     }, [user?._id, currentUser?._id])
 
@@ -48,9 +47,9 @@ export default function Rightbar({ user }) {
 
     const handleFollowClick = () => {
         if (followed)
-            unfollow(user._id, currentUser._id, dispatch);
+            unfollow(user._id, currentUser?._id, dispatch);
         else
-            follow(user._id, currentUser._id, dispatch);
+            follow(user._id, currentUser?._id, dispatch);
     }
 
     const FollowButton = () => {

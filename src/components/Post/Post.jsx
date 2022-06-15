@@ -19,7 +19,7 @@ export default function Post({ post }) {
 
   const likeHandler = () => {
     put(likePost(post._id), {}, {
-      userId: user._id
+      userId: user?._id
     }).then(res => {
       if (res && res.data?.success) {
         setLike(isLiked ? like - 1 : like + 1);
@@ -33,11 +33,11 @@ export default function Post({ post }) {
       <div className="sm-padding-10">
         <div className="postTop">
           <div className="postTopLeft">
-            <Link to={`profile/${post.username}`}>
+            <Link to={`profile/${post?.username}`}>
               <img src={dpUrl(post?.profilePicture)} alt="" className="sm-profile-image-32" />
             </Link>
             <span className="postUsername">{post?.firstName + ' ' + post?.lastName}</span>
-            <span className="sm-font-size-12">{format(post.createdAt)}</span>
+            <span className="sm-font-size-12">{format(post?.createdAt)}</span>
           </div>
           <div className="postTopRight">
             <MoreVert />
@@ -45,7 +45,7 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post?.desc}</span>
-          <img src={mUrl(post.img)} alt="" className="postImg" />
+          <img src={mUrl(post?.img)} alt="" className="postImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
